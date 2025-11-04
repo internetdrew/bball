@@ -117,8 +117,8 @@ Last updated: just now
 
 ## Data Sources
 
-- Scoreboard: `https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json`
-- Season schedule: `https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json`
+- Scoreboard: [https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json](https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json)
+- Season schedule: [https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json](https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json)
 
 These are unofficial public JSON endpoints.
 

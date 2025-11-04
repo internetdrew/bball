@@ -1,6 +1,6 @@
 # bball (NBA CLI)
 
-Catch up on NBA games from your terminal. Fast, simple, and just for fun.
+Check NBA scores from your terminal. No apps, no scrolling, just the game.
 
 This side project pulls live scoreboard data and season schedules from the NBA's public JSON endpoints and formats them nicely for the command line.
 

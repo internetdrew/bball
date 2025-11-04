@@ -165,7 +165,11 @@ func FormatTeamSchedule(games []nba.Game, teamQuery string, title string) string
 		var statusLine string
 		switch game.GameStatus {
 		case 1: // Scheduled
-			day := FormatGameDay(game.GameTimeUTC)
+			dateSrc := game.GameDateTimeUTC
+			if dateSrc == "" {
+				dateSrc = game.GameTimeUTC
+			}
+			day := FormatGameDay(dateSrc)
 			if day != "" {
 				statusLine = cyan(fmt.Sprintf("%s — %s %s %s", day, location, opponent, game.GameStatusText))
 			} else {

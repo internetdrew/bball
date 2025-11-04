@@ -10,7 +10,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "bball",
 	Short: "Catch up on NBA games from your terminal",
-	Long:  "A fast CLI tool to get live scores, game recaps, and summaries right from your terminal.",
+	Long:  "A fast CLI tool for checking live NBA scores, today's games, and your favorite team's recent and upcoming matchups.",
 }
 
 func Execute() {

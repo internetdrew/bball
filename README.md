@@ -6,16 +6,12 @@ This side project pulls live scoreboard data and season schedules from the NBA's
 
 > Hobby project: no official releases or code signing. Build from source or `go install` to use.
 
----
-
 ## Features
 
 - View today's NBA games: status, scores, and clocks
 - Filter for only live or only final games
 - See a team's upcoming or recent games
 - Quick "catch-up" summary for a team's current (live) game
-
----
 
 ## Install
 
@@ -49,13 +45,11 @@ go build -o bball .
 # e.g., ~/bin avoids sudo:
 mkdir -p ~/bin
 mv bball ~/bin
-echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="${GOBIN:-$(go env GOPATH)/bin}:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **Note for macOS:** Gatekeeper generally allows locally built binaries. Downloaded binaries from unknown sources may require manual approval or recompilation.
-
----
 
 ## Usage
 
@@ -77,8 +71,6 @@ bball catch lakers
 ```
 
 Run `bball --help` or `bball <command> --help` for all options.
-
----
 
 ## Examples
 
@@ -123,16 +115,12 @@ LeBron James (LAL) - 28 PTS, 8 REB, 9 AST
 Last updated: just now
 ```
 
----
-
 ## Data Sources
 
 - Scoreboard: `https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json`
 - Season schedule: `https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json`
 
 These are unofficial public JSON endpoints.
-
----
 
 ## Development
 
@@ -143,23 +131,18 @@ These are unofficial public JSON endpoints.
 ### Project layout
 
 ```
-main.go
+bball/
+├── go.mod            # Go module definition
+├── go.sum            # Dependency checksums
+├── main.go           # Entry point and CLI setup
+├── cmd/              # Command implementations (catch, games, schedule, root)
+└── internal/
+    ├── nba/          # NBA API client and data types
+    └── util/         # Terminal formatting utilities
 ```
 
-$ bball catch warriors
+## FAQ
 
-🏀 Golden State Warriors vs Los Angeles Lakers — In Progress
-📅 Monday, January 2, 2006 at 7:30 PM EST
-
-GSW 72 - LAL 68
-
-Top Performers:
-Stephen Curry (GSW) - 24 PTS, 3 REB, 4 AST
-LeBron James (LAL) - 18 PTS, 6 REB, 5 AST
-
-Last updated: just now
-
-```
 **Why no Homebrew/apt releases or signed macOS binaries?**
 
 - Hobby project; no paid Apple certs and no release automation. Use `go install` or build locally.
@@ -168,15 +151,10 @@ Last updated: just now
 
 - Should work in a modern terminal. Colors use `fatih/color`. If colors look odd, try a different terminal.
 
----
-
 ## Contributing
 
 PRs and issues welcome. Keep it simple and fast—this is just for fun.
 
----
-
 ## License
 
 No license selected yet. If you plan to use or redistribute commercially, open an issue to discuss.
-```

@@ -6,6 +6,18 @@ This side project pulls live scoreboard data and season schedules from the NBA's
 
 > Hobby project: no official releases or code signing. Build from source or `go install` to use.
 
+## Table of Contents
+
+- [Features](#features)
+- [Install](#install)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Data Sources](#data-sources)
+- [Development](#development)
+- [FAQ](#faq)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - View today's NBA games: status, scores, and clocks
@@ -157,4 +169,6 @@ PRs and issues welcome. Keep it simple and fast—this is just for fun.
 
 ## License
 
-No license selected yet. If you plan to use or redistribute commercially, open an issue to discuss.
+MIT License - see [LICENSE](LICENSE) file for details.
+
+Feel free to use, modify, and distribute this code however you'd like.

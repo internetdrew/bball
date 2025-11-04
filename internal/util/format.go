@@ -27,6 +27,23 @@ func FormatGameDate(dateStr string) string {
 	return t.Format("Monday, January 2, 2006 at 3:04 PM MST")
 }
 
+// FormatGameDay returns a concise local date like "Mon Jan 2"
+func FormatGameDay(dateStr string) string {
+	t, err := time.Parse(time.RFC3339, dateStr)
+	if err != nil {
+		return "" // keep it silent; caller can omit if empty
+	}
+
+	// Convert to EST/EDT
+	loc, err := time.LoadLocation("America/New_York")
+	if err != nil {
+		loc = time.UTC
+	}
+	t = t.In(loc)
+
+	return t.Format("Mon Jan 2")
+}
+
 // FormatScore returns a concise string like "BKN 109 - MIN 125"
 func FormatScore(game nba.Game) string {
 	return fmt.Sprintf("%s %d - %s %d",
@@ -148,7 +165,12 @@ func FormatTeamSchedule(games []nba.Game, teamQuery string, title string) string
 		var statusLine string
 		switch game.GameStatus {
 		case 1: // Scheduled
-			statusLine = cyan(fmt.Sprintf("%s %s %s", location, opponent, game.GameStatusText))
+			day := FormatGameDay(game.GameTimeUTC)
+			if day != "" {
+				statusLine = cyan(fmt.Sprintf("%s — %s %s %s", day, location, opponent, game.GameStatusText))
+			} else {
+				statusLine = cyan(fmt.Sprintf("%s %s %s", location, opponent, game.GameStatusText))
+			}
 		case 2: // Live
 			var teamScore, oppScore int
 			if isHome {
